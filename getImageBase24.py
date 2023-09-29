@@ -16,17 +16,21 @@ def get_image_base24(image_file):
     return base64_string
 
 def get_items():
-    tuple
     itemsList = []
     with open('items.txt') as items:
         for item in items.readlines():
             item = item.split(",")
-            item[4] = get_image_base24('images/'+item[4].replace("'","")[1:])
+            # Convert the 'on_special' value to an integer
+            to_boolean = 1 if item[5].strip() == 'True' else 0
+            item[5] = to_boolean  # Set the 'on_special' field as an integer
+            item[-1] = to_boolean
+            item[4] = get_image_base24('images/'+item[4].replace("'", "")[1:])
             holdingTuple = ()
             for singleItem in item:
-                holdingTuple = holdingTuple+(singleItem,)
+                holdingTuple = holdingTuple + (singleItem,)
             itemsList.append(holdingTuple)
     return itemsList
+
 
 
 

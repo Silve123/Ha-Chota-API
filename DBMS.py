@@ -1,6 +1,8 @@
 import sqlite3
 
 def get_specials():
+    print("in specials")
+
     try:
         connection = sqlite3.connect('Ha-Chota.db')  # Replace with your database file path
         cursor = connection.cursor()
@@ -8,6 +10,7 @@ def get_specials():
         # Retrieve items on special from the database
         cursor.execute('SELECT name, description, price, new_price, image_data FROM Item WHERE on_special = 1')
         special_items = cursor.fetchall()
+
 
         specials_list = []
         for item in special_items:
@@ -19,6 +22,7 @@ def get_specials():
                 'image_data': item[4],
             }
             specials_list.append(item_dict)
+
 
         return specials_list
 
