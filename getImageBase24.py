@@ -22,8 +22,13 @@ def get_items():
             item = item.split(",")
             # Convert the 'on_special' value to an integer
             to_boolean = 1 if item[5].strip() == 'True' else 0
+            to_boolean_arrivals = 1 if item[1].strip() == 'True' else 0
+
+            item[0] = item[0].replace("'","")
+            item[1] = item[1].replace("'","")
+
             item[5] = to_boolean  # Set the 'on_special' field as an integer
-            item[-1] = to_boolean
+            item[-1] = to_boolean_arrivals
             item[4] = get_image_base24('images/'+item[4].replace("'", "")[1:])
             holdingTuple = ()
             for singleItem in item:
