@@ -86,6 +86,7 @@ class ECommerceDatabase:
 
         insert_item_query = 'INSERT INTO Item (name, description, category_id, price, image_data, on_special, new_price, new_arrival) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
         self.cursor.executemany(insert_item_query, items)
+        print("populated table")
 
         # Insert data into BestSellers table
         best_sellers = [
