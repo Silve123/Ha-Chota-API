@@ -22,7 +22,7 @@ def get_items():
             item = item.split(",")
             # Convert the 'on_special' value to an integer
             to_boolean = 1 if item[5].strip() == 'True' else 0
-            to_boolean_arrivals = 1 if item[1].strip() == 'True' else 0
+            to_boolean_arrivals = 1 if item[-1].strip() == 'True' else 0
 
             item[0] = item[0].replace("'","")
             item[1] = item[1].replace("'","")
